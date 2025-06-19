@@ -1,70 +1,226 @@
-# Getting Started with Create React App
+Customer Survey React Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview
 
-## Available Scripts
+This project contains a CustomerSurvey React component designed to collect user feedback through a multi-question survey. The survey includes rating-based questions (with 5 or 10-point scales) and a text-based question, featuring a clean, responsive UI with navigation, progress tracking, and session management.
 
-In the project directory, you can run:
+Features
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Dynamic Question Types: Supports rating (1-5 or 1-10 scale) and open-ended text questions.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Responsive UI: Uses Tailwind CSS for styling with a modern, gradient-themed design.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Navigation: Allows users to move between questions, skip questions, or submit the survey.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Progress Tracking: Displays a progress bar and question counter.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Session Management: Generates a unique session ID for each survey attempt.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+Answer Persistence: Stores answers with timestamps and session IDs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Confirmation Dialog: Prompts users before final survey submission.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+Auto-Reset: Returns to the welcome screen after 5 seconds post-submission.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Prerequisites
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+Node.js: Ensure Node.js is installed to manage dependencies.
+
+
+
+React: The component is built with React and uses hooks (useState, useRef).
+
+
+
+React Icons: Uses react-icons for visual icons (e.g., FaStar, FaHeart).
+
+
+
+Tailwind CSS: Requires Tailwind CSS for styling (configured via CDN or local setup).
+
+Installation
+
+
+
+
+
+Clone the Repository:
+
+git clone <repository-url>
+cd <repository-folder>
+
+
+
+Install Dependencies:
+
+npm install
+
+
+
+Install React Icons:
+
+npm install react-icons
+
+
+
+Set Up Tailwind CSS (if not using CDN): Follow the Tailwind CSS installation guide to configure Tailwind in your project.
+
+Usage
+
+
+
+
+
+Integrate the Component: Import and use the CustomerSurvey component in your React application:
+
+import CustomerSurvey from './CustomerSurvey';
+
+function App() {
+  return (
+    <div>
+      <CustomerSurvey />
+    </div>
+  );
+}
+
+
+
+Run the Application: Start the development server:
+
+npm start
+
+
+
+Access the Survey: Open your browser to http://localhost:3000 (or the configured port) to view the survey.
+
+File Structure
+
+
+
+
+
+CustomerSurvey.js: The main React component containing the survey logic and UI.
+
+
+
+README.md: This documentation file.
+
+Component Details
+
+
+
+
+
+Questions: Defined as an array of objects with properties:
+
+
+
+
+
+id: Unique identifier for the question.
+
+
+
+text: The question text.
+
+
+
+type: Either rating (for star or numerical ratings) or text (for open-ended responses).
+
+
+
+scale: Number of options for rating questions (5 or 10).
+
+
+
+icon: A React icon component for visual representation.
+
+
+
+State Management:
+
+
+
+
+
+currentScreen: Tracks the current view (welcome, survey, or thank-you).
+
+
+
+currentQuestionIndex: Tracks the active question.
+
+
+
+answers: Stores user responses with timestamps and session IDs.
+
+
+
+sessionId: Unique ID for each survey session.
+
+
+
+showConfirmDialog: Controls the visibility of the submission confirmation dialog.
+
+
+
+Key Functions:
+
+
+
+
+
+startSurvey: Initializes a new survey session.
+
+
+
+saveAnswer: Saves user responses with metadata.
+
+
+
+goToNext / goToPrevious: Navigates between questions.
+
+
+
+skipQuestion: Skips the current question.
+
+
+
+submitSurvey: Finalizes and logs the survey data.
+
+Styling
+
+
+
+
+
+Uses Tailwind CSS for responsive, utility-first styling.
+
+
+
+Features gradient backgrounds, rounded buttons, and animated transitions.
+
+
+
+Includes a progress bar and icon-based question headers.
